@@ -15,6 +15,7 @@ import (
 	"mxshop_srvs/goods_srv/proto"
 )
 
+//依据proto写服务
 type GoodsServer struct {
 	proto.UnimplementedGoodsServer
 }

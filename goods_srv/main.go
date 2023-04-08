@@ -40,9 +40,11 @@ func main() {
 	}
 
 	zap.S().Info("port: ", *Port)
-
+	//启动微服务
 	server := grpc.NewServer()
+	//注册rpc服务到微服务
 	proto.RegisterGoodsServer(server, &handler.GoodsServer{})
+	//挂载ip和端口
 	lis, err := net.Listen("tcp", fmt.Sprintf("%s:%d", *IP, *Port))
 	if err != nil {
 		panic("failed to listen:" + err.Error())

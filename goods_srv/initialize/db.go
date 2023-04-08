@@ -14,6 +14,7 @@ import (
 )
 
 func InitDB() {
+	//获得数据库配置信息
 	c := global.ServerConfig.MysqlInfo
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 		c.User, c.Password, c.Host, c.Port, c.Name)
@@ -26,7 +27,7 @@ func InitDB() {
 		},
 	)
 
-	// 全局模式
+	// 生成全局数据库客户端
 	var err error
 	global.DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{
