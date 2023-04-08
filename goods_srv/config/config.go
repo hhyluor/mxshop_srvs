@@ -1,5 +1,6 @@
 package config
 
+//建配置文件结构体
 type MysqlConfig struct {
 	Host     string `mapstructure:"host" json:"host"`
 	Port     int    `mapstructure:"port" json:"port"`

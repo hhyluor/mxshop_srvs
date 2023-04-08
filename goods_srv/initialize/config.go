@@ -21,8 +21,10 @@ func GetEnvInfo(env string) bool {
 
 func InitConfig() {
 	//从配置文件中读取出对应的配置
+	//读取环境变量
 	debug := GetEnvInfo("MXSHOP_DEBUG")
 	configFilePrefix := "config"
+	//读取nacos配置文件
 	configFileName := fmt.Sprintf("goods_srv/%s-pro.yaml", configFilePrefix)
 	if debug {
 		configFileName = fmt.Sprintf("goods_srv/%s-debug.yaml", configFilePrefix)
@@ -41,6 +43,7 @@ func InitConfig() {
 	zap.S().Infof("配置信息: %v", global.NacosConfig)
 
 	//从nacos中读取配置信息
+	//链接nacos读取配置文件,初始化其他所有配置
 	sc := []constant.ServerConfig{
 		{
 			IpAddr: global.NacosConfig.Host,

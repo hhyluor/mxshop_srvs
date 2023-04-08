@@ -7,6 +7,7 @@ import (
 	"github.com/olivere/elastic/v7"
 )
 
+//全局初始化配置变量
 var (
 	DB           *gorm.DB
 	ServerConfig config.ServerConfig
